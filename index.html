@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lorenzzo Singer | AI & Marketing Automation Specialist</title>
-<meta name="description" content="Lorenzzo Singer builds AI systems that run businesses on autopilot: automation pipelines, AI sales agents, paid ads, and full social media management.">
+<meta name="description" content="Lorenzzo Singer builds AI systems that run businesses on autopilot: automation pipelines, AI sales agents, paid ads, social media management, programmatic video, and motion-rich interfaces.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -268,6 +268,12 @@
   }
   .metric span{font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.08em}
   .metric b em{font-style:normal;color:var(--mint)}
+  .proj-link{
+    font-family:var(--mono);font-size:.72rem;color:var(--mint);
+    display:inline-flex;align-items:center;gap:8px;margin-top:20px;
+    transition:gap .3s ease,text-shadow .3s;
+  }
+  .proj-link:hover{gap:14px;text-shadow:0 0 18px rgba(93,202,165,.5)}
   @media(max-width:860px){
     .proj{grid-template-columns:1fr;padding:34px 28px}
     .proj-side{border-left:none;border-top:1px solid var(--line);padding:24px 0 0;flex-direction:row;flex-wrap:wrap;gap:28px}
@@ -322,6 +328,118 @@
   .step p{color:var(--muted);font-size:.86rem}
   @media(max-width:760px){.steps{grid-template-columns:1fr}}
 
+  /* ---------- CREATIVE LAB ---------- */
+  #motion{border-top:1px solid var(--line)}
+  .lab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .lab{
+    border:1px solid var(--line);border-radius:18px;background:var(--ink-2);
+    overflow:hidden;display:flex;flex-direction:column;
+    opacity:0;transform:translateY(22px);
+    transition:opacity .65s ease,transform .65s ease,border-color .3s,box-shadow .3s;
+  }
+  .lab-grid.in .lab{opacity:1;transform:none}
+  .lab-grid.in .lab:nth-child(2){transition-delay:.12s}
+  .lab-grid.in .lab:nth-child(3){transition-delay:.24s}
+  .lab-grid.in .lab:hover{transform:translateY(-5px);border-color:rgba(93,202,165,.35);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+  .lab-demo{
+    height:172px;background:var(--ink);border-bottom:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;flex-shrink:0;
+  }
+  .lab-demo::before{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 70% 80% at 50% 120%,rgba(93,202,165,.06),transparent);
+  }
+  .lab-hint{
+    position:absolute;bottom:10px;left:0;right:0;text-align:center;
+    font-family:var(--mono);font-size:.56rem;color:var(--muted);letter-spacing:.14em;
+  }
+  .lab-body{padding:26px 26px 30px}
+  .lab-body .tag{font-family:var(--mono);font-size:.65rem;color:var(--mint);letter-spacing:.14em;display:block;margin-bottom:14px}
+  .lab-body h3{font-family:var(--display);font-weight:700;font-size:1.12rem;margin-bottom:10px}
+  .lab-body p{color:var(--muted);font-size:.85rem}
+  .lab-body .stack{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+  .lab:hover .chip{border-color:var(--mint-dim);color:var(--paper)}
+  @media(max-width:900px){.lab-grid{grid-template-columns:1fr}}
+
+  /* demo · 05: motion / modal */
+  .demo-btn{
+    font-family:var(--mono);font-size:.74rem;color:var(--mint);
+    background:transparent;border:1px solid var(--mint-dim);border-radius:100px;
+    padding:13px 24px;cursor:pointer;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,letter-spacing .3s,background .3s,color .3s;
+  }
+  .demo-btn:hover{
+    transform:translateY(-3px);letter-spacing:.06em;
+    background:var(--mint);color:var(--ink);
+    box-shadow:0 10px 30px rgba(93,202,165,.3);
+  }
+  .modal-backdrop{
+    position:fixed;inset:0;z-index:80;
+    background:rgba(11,18,14,.7);backdrop-filter:blur(8px);
+    display:flex;align-items:center;justify-content:center;padding:24px;
+    opacity:0;visibility:hidden;
+    transition:opacity .35s ease,visibility .35s;
+  }
+  .modal-backdrop.open{opacity:1;visibility:visible}
+  .modal{
+    width:min(430px,100%);background:linear-gradient(160deg,var(--ink-2),var(--ink-3));
+    border:1px solid rgba(93,202,165,.3);border-radius:18px;padding:30px 30px 32px;
+    transform:translateY(22px) scale(.94);
+    transition:transform .45s cubic-bezier(.2,.9,.25,1.12);
+  }
+  .modal-backdrop.open .modal{transform:none}
+  .modal-head{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.1em;margin-bottom:18px;
+  }
+  .modal-x{
+    background:none;border:1px solid var(--line);color:var(--muted);border-radius:50%;
+    width:30px;height:30px;cursor:pointer;font-size:1rem;line-height:1;
+    transition:color .25s,border-color .25s,transform .25s;
+  }
+  .modal-x:hover{color:var(--mint);border-color:var(--mint-dim);transform:rotate(90deg)}
+  .modal h4{font-family:var(--display);font-weight:700;font-size:1.2rem;margin-bottom:10px}
+  .modal p{color:var(--muted);font-size:.86rem;margin-bottom:22px}
+
+  /* demo · 06: remotion render */
+  .render{width:82%;font-family:var(--mono)}
+  .render-head{display:flex;justify-content:space-between;font-size:.6rem;color:var(--muted);letter-spacing:.1em;margin-bottom:12px}
+  .render-strip{
+    position:relative;height:34px;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+    background:repeating-linear-gradient(90deg,rgba(93,202,165,.08) 0 22px,transparent 22px 24px);
+    margin-bottom:12px;
+  }
+  .render-strip i{
+    position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--gold);
+    box-shadow:0 0 10px rgba(217,185,108,.7);
+  }
+  .render-bar{height:4px;border-radius:100px;background:var(--ink-3);overflow:hidden;margin-bottom:10px}
+  .render-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--gold));border-radius:100px}
+  .render-stat{display:flex;justify-content:space-between;font-size:.62rem;color:var(--mint)}
+
+  /* demo · 07: css 3d cube */
+  .scene{width:96px;height:96px;perspective:640px}
+  .cube{
+    width:100%;height:100%;position:relative;transform-style:preserve-3d;
+    animation:cubeSpin 10s linear infinite;
+  }
+  .demo-3d:hover .cube{animation-duration:2.6s}
+  .cube i{
+    position:absolute;inset:0;border:1px solid var(--mint-dim);
+    background:rgba(93,202,165,.05);border-radius:4px;
+  }
+  .cube .f1{transform:rotateY(0deg) translateZ(48px)}
+  .cube .f2{transform:rotateY(90deg) translateZ(48px)}
+  .cube .f3{transform:rotateY(180deg) translateZ(48px)}
+  .cube .f4{transform:rotateY(-90deg) translateZ(48px)}
+  .cube .f5{transform:rotateX(90deg) translateZ(48px)}
+  .cube .f6{transform:rotateX(-90deg) translateZ(48px)}
+  @keyframes cubeSpin{
+    from{transform:rotateX(-20deg) rotateY(0deg)}
+    to{transform:rotateX(-20deg) rotateY(360deg)}
+  }
+
   /* ---------- ABOUT ---------- */
   #about{border-top:1px solid var(--line)}
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
@@ -368,7 +486,9 @@
 
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation:none!important;transition:none!important}
-    .rv,.svc,.step,.hero-anim{opacity:1;transform:none}
+    .rv,.svc,.step,.lab,.hero-anim{opacity:1;transform:none}
+    .cube{transform:rotateX(-20deg) rotateY(40deg)}
+    .modal-backdrop.open,.modal-backdrop.open .modal{opacity:1;visibility:visible;transform:none}
     h1 .accent{background:none;-webkit-text-fill-color:var(--mint)}
     #progress,.orb{display:none}
     html{scroll-behavior:auto}
@@ -384,6 +504,7 @@
     <a href="#" class="logo">LORENZZO<span class="dot">·</span>SINGER</a>
     <div class="nav-links">
       <a href="#services">Services</a>
+      <a href="#motion">Motion</a>
       <a href="#work">Work</a>
       <a href="#growth">Ads & Social</a>
       <a href="#about">About</a>
@@ -400,7 +521,7 @@
     <div>
       <span class="eyebrow hero-anim d1">AI × Marketing Automation</span>
       <h1 class="hero-anim d2">Your business, <span class="accent">running itself.</span><br><span class="thin">I build the systems.</span></h1>
-      <p class="hero-sub hero-anim d3">I'm Lorenzzo Singer, an AI specialist who turns manual, repetitive operations into <strong>automated pipelines that sell, post, respond, and report</strong> while you focus on the work only you can do.</p>
+      <p class="hero-sub hero-anim d3">I'm Lorenzzo Singer, an AI specialist who turns manual, repetitive operations into <strong>automated pipelines that sell, post, respond, render, and report</strong> while you focus on the work only you can do.</p>
       <div class="hero-actions hero-anim d4">
         <a href="#contact" class="btn-primary">Automate my business</a>
         <a href="#work" class="btn-ghost">See the systems
@@ -500,6 +621,61 @@
   </div>
 </section>
 
+<!-- CREATIVE LAB -->
+<section id="motion">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-eyebrow">Creative engineering</span>
+      <h2>Interfaces that move.<br>Video written in code.</h2>
+      <p>The systems above run the business. This layer makes it look alive — and every demo below is running live on this page, built exactly the way I'd ship it.</p>
+    </div>
+    <div class="lab-grid rv">
+      <div class="lab">
+        <div class="lab-demo">
+          <button class="demo-btn" id="openModal" type="button">preview_modal()</button>
+          <span class="lab-hint">HOVER THE BUTTON · CLICK FOR THE MODAL</span>
+        </div>
+        <div class="lab-body">
+          <span class="tag">05 / MOTION</span>
+          <h3>UI/UX Motion &amp; CSS</h3>
+          <p>Automated hover effects, modals, and page-load transitions in clean CSS or Framer Motion. Every interaction on this page — the reveals, the tilt, that button — is this service in production.</p>
+          <div class="stack"><span class="chip">CSS</span><span class="chip">Framer Motion</span><span class="chip">Micro-interactions</span></div>
+        </div>
+      </div>
+      <div class="lab">
+        <div class="lab-demo">
+          <div class="render" aria-hidden="true">
+            <div class="render-head"><span>remotion / explainer.tsx</span><span>30 FPS</span></div>
+            <div class="render-strip"><i id="playhead"></i></div>
+            <div class="render-bar"><i id="renderFill"></i></div>
+            <div class="render-stat"><span id="renderFrames">frame 000 / 240</span><span id="renderPct">0%</span></div>
+          </div>
+        </div>
+        <div class="lab-body">
+          <span class="tag">06 / VIDEO</span>
+          <h3>Programmatic Video</h3>
+          <p>Integrated with Remotion to code MP4 videos, explainers, and dynamic loops via chat. The edit is code: versioned, repeatable, and re-rendered in a single command.</p>
+          <div class="stack"><span class="chip">Remotion</span><span class="chip">React</span><span class="chip">MP4 pipelines</span></div>
+        </div>
+      </div>
+      <div class="lab">
+        <div class="lab-demo demo-3d">
+          <div class="scene" aria-hidden="true">
+            <div class="cube"><i class="f1"></i><i class="f2"></i><i class="f3"></i><i class="f4"></i><i class="f5"></i><i class="f6"></i></div>
+          </div>
+          <span class="lab-hint">HOVER TO GRAB THE SPIN · PURE CSS, NO LIBRARY</span>
+        </div>
+        <div class="lab-body">
+          <span class="tag">07 / 3D &amp; WEBGL</span>
+          <h3>3D &amp; WebGL Graphics</h3>
+          <p>Extends into complex frameworks — Three.js, GSAP ScrollTrigger, and React Three Fiber — for scroll-driven scenes and interactive product visuals, right in the browser.</p>
+          <div class="stack"><span class="chip">Three.js</span><span class="chip">GSAP ScrollTrigger</span><span class="chip">React Three Fiber</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WORK -->
 <section id="work">
   <div class="wrap">
@@ -572,6 +748,22 @@
         <div class="proj-side">
           <div class="metric"><b>Full</b><span>FUNNEL TRACKING (CAPI)</span></div>
           <div class="metric"><b>AI-first</b><span>BOOKING & CRM CORE</span></div>
+        </div>
+      </article>
+
+      <article class="proj rv">
+        <div>
+          <span class="proj-num">PROJECT · 06</span>
+          <h3>Auto Video Editor</h3>
+          <span class="role">PROGRAMMATIC VIDEO PIPELINE · REMOTION</span>
+          <p>An automated video editing system: describe the edit in chat and the pipeline assembles the cut in code — captions, motion graphics, dynamic loops — then Remotion renders the final MP4. No timeline dragging; every edit is versioned, repeatable, and re-renderable on demand.</p>
+          <a class="proj-link" href="https://github.com/lsinger027/auto-video-editor" target="_blank" rel="noopener">View on GitHub
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="proj-side">
+          <div class="metric"><b>MP4</b><span>RENDERED FROM CODE</span></div>
+          <div class="metric"><b>0</b><span>TIMELINES DRAGGED</span></div>
         </div>
       </article>
     </div>
@@ -650,6 +842,7 @@
         <div class="fact-row"><span>ROLE</span><b>AI & Marketing Automation Specialist</b></div>
         <div class="fact-row"><span>FOCUS</span><b>Service businesses & SMBs</b></div>
         <div class="fact-row"><span>CORE STACK</span><b>n8n · Claude · AWS · Chatwoot · Meta</b></div>
+        <div class="fact-row"><span>CREATIVE STACK</span><b>Framer Motion · Remotion · Three.js · GSAP</b></div>
         <div class="fact-row"><span>BASED</span><b>US East Coast · working worldwide</b></div>
         <div class="fact-row"><span>LANGUAGES</span><b>English · Portuguese</b></div>
       </div>
@@ -677,6 +870,16 @@
     </div>
   </div>
 </footer>
+
+<!-- Live modal demo (Creative engineering · 05) -->
+<div class="modal-backdrop" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle" aria-hidden="true">
+  <div class="modal">
+    <div class="modal-head"><span>motion / modal.css</span><button class="modal-x" type="button" data-close aria-label="Close modal">×</button></div>
+    <h4 id="demoModalTitle">This modal is the portfolio piece.</h4>
+    <p>Backdrop blur, spring scale-in, click-outside and Escape to close. The same motion system ships in every interface I build — nothing here is a mockup.</p>
+    <button class="btn-primary" type="button" data-close>Nice. Close it</button>
+  </div>
+</div>
 
 <script>
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -749,6 +952,50 @@
     let s=0;
     setInterval(()=>{ steps.forEach(el=>el.classList.remove('active')); steps[s%steps.length].classList.add('active'); s++; },1600);
   } else if(steps.length){ steps[0].classList.add('active'); }
+
+  // Modal demo (Creative engineering · 05)
+  const modal=document.getElementById('demoModal');
+  const openBtn=document.getElementById('openModal');
+  if(modal && openBtn){
+    const open=()=>{
+      modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      modal.querySelector('.modal-x').focus();
+    };
+    const close=()=>{
+      modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      openBtn.focus();
+    };
+    openBtn.addEventListener('click',open);
+    modal.addEventListener('click',e=>{ if(e.target===modal) close(); });
+    modal.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',close));
+    window.addEventListener('keydown',e=>{ if(e.key==='Escape' && modal.classList.contains('open')) close(); });
+  }
+
+  // Remotion render loop (Creative engineering · 06)
+  const rFill=document.getElementById('renderFill'),
+        rFrames=document.getElementById('renderFrames'),
+        rPct=document.getElementById('renderPct'),
+        rHead=document.getElementById('playhead');
+  if(rFill && rFrames && rPct){
+    const TOTAL=240;
+    const paint=f=>{
+      const p=Math.round(f/TOTAL*100);
+      rFill.style.width=p+'%';
+      rPct.textContent=p+'%';
+      if(rHead) rHead.style.left='calc('+p+'% - 1px)';
+      rFrames.textContent = f>=TOTAL ? '✓ explainer.mp4 rendered' : 'frame '+String(f).padStart(3,'0')+' / '+TOTAL;
+    };
+    if(reduced){ paint(TOTAL); }
+    else{
+      let f=0, hold=0;
+      setInterval(()=>{
+        if(f>=TOTAL){ hold++; if(hold>24){ f=0; hold=0; } paint(TOTAL); return; }
+        f=Math.min(TOTAL, f+3); paint(f);
+      },60);
+    }
+  }
 </script>
 </body>
 </html>
